@@ -1,16 +1,17 @@
-import manim
-from manim import *
+import manim as m
 
 from manim_themes.manim_theme import apply_theme
 from manim_themes.theme_preview import theme_preview
 
 
-class CatppucinLattePreview(Scene):
+class CatppucinLattePreview(m.Scene):
 
     def setup(self):
         theme = "catppuccin-latte"
         # add light_theme=True to change the default text color to black
-        apply_theme(manim_scene=self, theme_name=theme, light_theme=True)
+        apply_theme(manim_scene=self, theme_name=theme)
+        # You might want to set the default font and color for text here
+        m.Text.set_default(font="Courier New", color=m.WHITE)
 
 
 

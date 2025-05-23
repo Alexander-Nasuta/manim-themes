@@ -2,8 +2,7 @@ import os
 import plistlib
 import requests
 
-import manim
-from manim import *
+import manim as m
 
 from manim_themes.logger import log
 
@@ -48,10 +47,10 @@ def convert_colors_to_manim_colors(theme_dict):
     :param theme_dict:
     :return:
     """
-    return {k: manim.ManimColor(rgb_dict_to_hex(v)) for k, v in theme_dict.items()}
+    return {k: m.ManimColor(rgb_dict_to_hex(v)) for k, v in theme_dict.items()}
 
 
-def apply_theme(manim_scene: manim.Scene, theme_name: str, themes_dir="./media/themes", light_theme=False):
+def apply_theme(manim_scene: m.Scene, theme_name: str, themes_dir="./media/themes", **kwargs):
     """
     Applies the iTerm2 theme to a Manim scene.
     It basically overrides the manim default colors with the colors of the specified theme.
@@ -99,106 +98,106 @@ def apply_theme(manim_scene: manim.Scene, theme_name: str, themes_dir="./media/t
     # override colors
 
 
-    manim.WHITE = theme_manim_colors['Ansi 7 Color']
-    manim.BLACK = theme_manim_colors['Ansi 0 Color']
+    m.WHITE = theme_manim_colors['Ansi 7 Color']
+    m.BLACK = theme_manim_colors['Ansi 0 Color']
 
-    manim.GRAY_A = theme_manim_colors['Ansi 8 Color'].lighter(0.2)
-    manim.GREY_A = theme_manim_colors['Ansi 8 Color'].lighter(0.2)
-    manim.GRAY_B = theme_manim_colors['Ansi 8 Color'].lighter(0.1)
-    manim.GREY_B = theme_manim_colors['Ansi 8 Color'].lighter(0.1)
-    manim.GRAY_C = theme_manim_colors['Ansi 8 Color']
-    manim.GREY_C = theme_manim_colors['Ansi 8 Color']
-    manim.GRAY_D = theme_manim_colors['Ansi 8 Color'].darker(0.1)
-    manim.GREY_D = theme_manim_colors['Ansi 8 Color'].darker(0.1)
-    manim.GRAY_E = theme_manim_colors['Ansi 8 Color'].darker(0.2)
-    manim.GREY_E = theme_manim_colors['Ansi 8 Color'].darker(0.2)
+    m.GRAY_A = theme_manim_colors['Ansi 8 Color'].lighter(0.2)
+    m.GREY_A = theme_manim_colors['Ansi 8 Color'].lighter(0.2)
+    m.GRAY_B = theme_manim_colors['Ansi 8 Color'].lighter(0.1)
+    m.GREY_B = theme_manim_colors['Ansi 8 Color'].lighter(0.1)
+    m.GRAY_C = theme_manim_colors['Ansi 8 Color']
+    m.GREY_C = theme_manim_colors['Ansi 8 Color']
+    m.GRAY_D = theme_manim_colors['Ansi 8 Color'].darker(0.1)
+    m.GREY_D = theme_manim_colors['Ansi 8 Color'].darker(0.1)
+    m.GRAY_E = theme_manim_colors['Ansi 8 Color'].darker(0.2)
+    m.GREY_E = theme_manim_colors['Ansi 8 Color'].darker(0.2)
 
-    manim.LIGHTER_GRAY = manim.GRAY_A
-    manim.LIGHTER_GREY = manim.GREY_A
-    manim.LIGHT_GRAY = manim.GRAY_B
-    manim.LIGHT_GREY = manim.GRAY_B
+    m.LIGHTER_GRAY = m.GRAY_A
+    m.LIGHTER_GREY = m.GREY_A
+    m.LIGHT_GRAY = m.GRAY_B
+    m.LIGHT_GREY = m.GRAY_B
     
-    manim.GRAY = theme_manim_colors['Ansi 8 Color']
-    manim.GREY = theme_manim_colors['Ansi 8 Color']
+    m.GRAY = theme_manim_colors['Ansi 8 Color']
+    m.GREY = theme_manim_colors['Ansi 8 Color']
     
-    manim.DARK_GRAY = manim.GRAY_D
-    manim.DARK_GREY = manim.GREY_D
-    manim.DARKER_GRAY = manim.GRAY_E
-    manim.DARKER_GREY = manim.GREY_E
+    m.DARK_GRAY = m.GRAY_D
+    m.DARK_GREY = m.GREY_D
+    m.DARKER_GRAY = m.GRAY_E
+    m.DARKER_GREY = m.GREY_E
 
-    manim.BLUE_A = theme_manim_colors['Ansi 4 Color'].lighter(0.2)
-    manim.BLUE_B = theme_manim_colors['Ansi 4 Color'].lighter(0.1)
-    manim.BLUE_C = theme_manim_colors['Ansi 4 Color']
-    manim.BLUE_D = theme_manim_colors['Ansi 4 Color'].darker(0.1)
-    manim.BLUE_E = theme_manim_colors['Ansi 4 Color'].darker(0.2)
-    manim.BLUE = theme_manim_colors['Ansi 4 Color']
-    # manim.PURE_BLUE = manim.ManimColor("#0000FF")
-    manim.DARK_BLUE = theme_manim_colors['Ansi 4 Color'].darker(0.2)
+    m.BLUE_A = theme_manim_colors['Ansi 4 Color'].lighter(0.2)
+    m.BLUE_B = theme_manim_colors['Ansi 4 Color'].lighter(0.1)
+    m.BLUE_C = theme_manim_colors['Ansi 4 Color']
+    m.BLUE_D = theme_manim_colors['Ansi 4 Color'].darker(0.1)
+    m.BLUE_E = theme_manim_colors['Ansi 4 Color'].darker(0.2)
+    m.BLUE = theme_manim_colors['Ansi 4 Color']
+    # m.PURE_BLUE = m.ManimColor("#0000FF")
+    m.DARK_BLUE = theme_manim_colors['Ansi 4 Color'].darker(0.2)
 
-    manim.TEAL_A = theme_manim_colors['Ansi 6 Color'].lighter(0.2)
-    manim.TEAL_B = theme_manim_colors['Ansi 6 Color'].lighter(0.1)
-    manim.TEAL_C = theme_manim_colors['Ansi 6 Color']
-    manim.TEAL_D = theme_manim_colors['Ansi 6 Color'].darker(0.1)
-    manim.TEAL_E = theme_manim_colors['Ansi 6 Color'].darker(0.2)
-    manim.TEAL = theme_manim_colors['Ansi 6 Color']
+    m.TEAL_A = theme_manim_colors['Ansi 6 Color'].lighter(0.2)
+    m.TEAL_B = theme_manim_colors['Ansi 6 Color'].lighter(0.1)
+    m.TEAL_C = theme_manim_colors['Ansi 6 Color']
+    m.TEAL_D = theme_manim_colors['Ansi 6 Color'].darker(0.1)
+    m.TEAL_E = theme_manim_colors['Ansi 6 Color'].darker(0.2)
+    m.TEAL = theme_manim_colors['Ansi 6 Color']
 
 
-    manim.GREEN_A = theme_manim_colors['Ansi 2 Color'].lighter(0.2)
-    manim.GREEN_B = theme_manim_colors['Ansi 2 Color'].lighter(0.1)
-    manim.GREEN_C = theme_manim_colors['Ansi 2 Color']
-    manim.GREEN_D = theme_manim_colors['Ansi 2 Color'].darker(0.1)
-    manim.GREEN_E = theme_manim_colors['Ansi 2 Color'].darker(0.2)
+    m.GREEN_A = theme_manim_colors['Ansi 2 Color'].lighter(0.2)
+    m.GREEN_B = theme_manim_colors['Ansi 2 Color'].lighter(0.1)
+    m.GREEN_C = theme_manim_colors['Ansi 2 Color']
+    m.GREEN_D = theme_manim_colors['Ansi 2 Color'].darker(0.1)
+    m.GREEN_E = theme_manim_colors['Ansi 2 Color'].darker(0.2)
     # PURE_GREEN = ManimColor("#00FF00")
-    manim.GREEN = theme_manim_colors['Ansi 2 Color']
+    m.GREEN = theme_manim_colors['Ansi 2 Color']
 
 
-    manim.YELLOW_A = theme_manim_colors['Ansi 3 Color'].lighter(0.2)
-    manim.YELLOW_B = theme_manim_colors['Ansi 3 Color'].lighter(0.1)
-    manim.YELLOW_C = theme_manim_colors['Ansi 3 Color']
-    manim.YELLOW_D = theme_manim_colors['Ansi 3 Color'].darker(0.1)
-    manim.YELLOW_E = theme_manim_colors['Ansi 3 Color'].darker(0.2)
-    manim.YELLOW = theme_manim_colors['Ansi 3 Color']
+    m.YELLOW_A = theme_manim_colors['Ansi 3 Color'].lighter(0.2)
+    m.YELLOW_B = theme_manim_colors['Ansi 3 Color'].lighter(0.1)
+    m.YELLOW_C = theme_manim_colors['Ansi 3 Color']
+    m.YELLOW_D = theme_manim_colors['Ansi 3 Color'].darker(0.1)
+    m.YELLOW_E = theme_manim_colors['Ansi 3 Color'].darker(0.2)
+    m.YELLOW = theme_manim_colors['Ansi 3 Color']
 
-    manim.GOLD_A = theme_manim_colors['Ansi 11 Color'].lighter(0.2)
-    manim.GOLD_B = theme_manim_colors['Ansi 11 Color'].lighter(0.1)
-    manim.GOLD_C = theme_manim_colors['Ansi 11 Color']
-    manim.GOLD_D = theme_manim_colors['Ansi 11 Color'].darker(0.1)
-    manim.GOLD_E = theme_manim_colors['Ansi 11 Color'].darker(0.2)
-    manim.GOLD = theme_manim_colors['Ansi 11 Color']
+    m.GOLD_A = theme_manim_colors['Ansi 11 Color'].lighter(0.2)
+    m.GOLD_B = theme_manim_colors['Ansi 11 Color'].lighter(0.1)
+    m.GOLD_C = theme_manim_colors['Ansi 11 Color']
+    m.GOLD_D = theme_manim_colors['Ansi 11 Color'].darker(0.1)
+    m.GOLD_E = theme_manim_colors['Ansi 11 Color'].darker(0.2)
+    m.GOLD = theme_manim_colors['Ansi 11 Color']
 
-    manim.RED_A = theme_manim_colors['Ansi 4 Color'].lighter(0.2)
-    manim.RED_B = theme_manim_colors['Ansi 4 Color'].lighter(0.1)
-    manim.RED_C = theme_manim_colors['Ansi 4 Color']
-    manim.RED_D = theme_manim_colors['Ansi 4 Color'].darker(0.1)
-    manim.RED_E = theme_manim_colors['Ansi 4 Color'].darker(0.2)
-    # manim.PURE_RED = ManimColor("#FF0000")
-    manim.RED = theme_manim_colors['Ansi 4 Color']
-
-
-    manim.MAROON_A = theme_manim_colors['Ansi 9 Color'].lighter(0.2)
-    manim.MAROON_B = theme_manim_colors['Ansi 9 Color'].lighter(0.1)
-    manim.MAROON_C = theme_manim_colors['Ansi 9 Color']
-    manim.MAROON_D = theme_manim_colors['Ansi 9 Color'].darker(0.1)
-    manim.MAROON_E = theme_manim_colors['Ansi 9 Color'].darker(0.2)
-    manim.MAROON = theme_manim_colors['Ansi 9 Color']
-
-    manim.PURPLE_A = theme_manim_colors['Ansi 5 Color'].lighter(0.2)
-    manim.PURPLE_B = theme_manim_colors['Ansi 5 Color'].lighter(0.1)
-    manim.PURPLE_C = theme_manim_colors['Ansi 5 Color']
-    manim.PURPLE_D = theme_manim_colors['Ansi 5 Color'].darker(0.1)
-    manim.PURPLE_E = theme_manim_colors['Ansi 5 Color'].darker(0.2)
-    manim.PURPLE = theme_manim_colors['Ansi 5 Color']
+    m.RED_A = theme_manim_colors['Ansi 1 Color'].lighter(0.2)
+    m.RED_B = theme_manim_colors['Ansi 1 Color'].lighter(0.1)
+    m.RED_C = theme_manim_colors['Ansi 1 Color']
+    m.RED_D = theme_manim_colors['Ansi 1 Color'].darker(0.1)
+    m.RED_E = theme_manim_colors['Ansi 1 Color'].darker(0.2)
+    # m.PURE_RED = ManimColor("#FF0000")
+    m.RED = theme_manim_colors['Ansi 1 Color']
 
 
-    manim.PINK =  theme_manim_colors['Ansi 5 Color']
-    manim.LIGHT_PINK =  theme_manim_colors['Ansi 13 Color']
+    m.MAROON_A = theme_manim_colors['Ansi 9 Color'].lighter(0.2)
+    m.MAROON_B = theme_manim_colors['Ansi 9 Color'].lighter(0.1)
+    m.MAROON_C = theme_manim_colors['Ansi 9 Color']
+    m.MAROON_D = theme_manim_colors['Ansi 9 Color'].darker(0.1)
+    m.MAROON_E = theme_manim_colors['Ansi 9 Color'].darker(0.2)
+    m.MAROON = theme_manim_colors['Ansi 9 Color']
 
-    manim.ORANGE = 0.5 * manim.RED + 0.5 * manim.YELLOW
-    manim.LIGHT_BROWN = manim.ORANGE.lighter(0.1)
-    manim.DARK_BROWN = manim.ORANGE.darker(0.1)
+    m.PURPLE_A = theme_manim_colors['Ansi 5 Color'].lighter(0.2)
+    m.PURPLE_B = theme_manim_colors['Ansi 5 Color'].lighter(0.1)
+    m.PURPLE_C = theme_manim_colors['Ansi 5 Color']
+    m.PURPLE_D = theme_manim_colors['Ansi 5 Color'].darker(0.1)
+    m.PURPLE_E = theme_manim_colors['Ansi 5 Color'].darker(0.2)
+    m.PURPLE = theme_manim_colors['Ansi 5 Color']
 
-    manim.GRAY_BROWN = 0.5 * manim.LIGHT_BROWN + 0.5 * manim.GRAY
-    manim.GREY_BROWN = 0.5 * manim.LIGHT_BROWN + 0.5 * manim.GREY
+
+    m.PINK =  theme_manim_colors['Ansi 5 Color']
+    m.LIGHT_PINK =  theme_manim_colors['Ansi 13 Color']
+
+    m.ORANGE = 0.5 * m.RED + 0.5 * m.YELLOW
+    m.LIGHT_BROWN = m.ORANGE.lighter(0.1)
+    m.DARK_BROWN = m.ORANGE.darker(0.1)
+
+    m.GRAY_BROWN = 0.5 * m.LIGHT_BROWN + 0.5 * m.GRAY
+    m.GREY_BROWN = 0.5 * m.LIGHT_BROWN + 0.5 * m.GREY
 
     # Colors used for Manim Community's logo and banner
 
@@ -210,11 +209,5 @@ def apply_theme(manim_scene: manim.Scene, theme_name: str, themes_dir="./media/t
 
     # set background color
     manim_scene.camera.background_color = theme_manim_colors['Background Color']
-
-    if light_theme:
-        # somehow prefixes matter here
-        manim.Text.set_default(color=manim.BLACK)
-        #m.Text.set_default(color=m.BLACK)
-        Text.set_default(color=BLACK)
 
 
