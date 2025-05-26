@@ -1,0 +1,29 @@
+
+/* @import url('https://iosevka-webfonts.github.io/iosevka-fixed/iosevka-fixed.css'); */
+/* @import url('https://cdn.jsdelivr.net/npm/iosevka@16.0.0/dist/iosevka.css'); */
+/* @import url('https://pvinis.github.io/iosevka-webfont/3.4.1/iosevka.css'); */
+@font-face {
+    font-family: 'Nerd Font';
+    src: url('SymbolsNerdFont-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.nerd-font {
+    font-family: 'Nerd Font', sans-serif;
+}
+
+
+body {
+    font-family: 'Nerd Font', sans-serif;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Nerd Font', sans-serif;
+}
+
+code, span, pre {
+    font-family: 'Nerd Font', sans-serif;
+}
