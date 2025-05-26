@@ -14,8 +14,8 @@ class TokyonightDayPreview(m.Scene):
 
 
     def construct(self):
-        my_theme = theme_preview()
-        self.add(my_theme)
+        my_theme_preview = theme_preview()
+        self.add(my_theme_preview)
 
 
 if __name__ == '__main__':

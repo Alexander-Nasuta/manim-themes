@@ -1,14 +1,20 @@
 import os
 import plistlib
 import requests
+import pathlib
 
 import manim as m
 
+
 from manim_themes.logger import log
 
-def download_iterm2_theme(theme_name, themes_dir="./media/themes"):
+def download_iterm2_theme(theme_name: str, themes_dir: str | pathlib.Path="./media/themes"):
     """
-    Lädt das Theme von GitHub herunter, falls es nicht lokal vorhanden ist.
+    Downloads the iTerm2 theme from GitHub and saves it to the specified directory.
+
+    :param theme_name: the name of the theme to download (without the .itermcolors extension)
+    :param themes_dir: the directory where the theme will be saved
+    :return: None
     """
     os.makedirs(themes_dir, exist_ok=True)
     base_url = "https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/refs/heads/master/schemes"
@@ -21,10 +27,14 @@ def download_iterm2_theme(theme_name, themes_dir="./media/themes"):
     else:
         raise FileNotFoundError(f"Theme '{theme_name}' konnte nicht von GitHub geladen werden.")
 
-def load_iterm2_theme(theme_name, themes_dir="./media/themes"):
+def load_iterm2_theme(theme_name:str, themes_dir: str | pathlib.Path="./media/themes"):
     """
-    Lädt ein iTerm2-Theme (.itermcolors) als Python-Dict.
-    Lädt das Theme ggf. automatisch herunter.
+    Loads an iTerm2 theme (.itermcolors) as a Python dictionary.
+    Downloads the theme automatically if it is not already present in the specified directory.
+
+    :param theme_name: the name of the theme to load (without the .itermcolors extension)
+    :param themes_dir: the directory where the theme is stored
+    :return: a dictionary containing the iTerm2 theme colors
     """
     theme_file = os.path.join(themes_dir, f"{theme_name}.itermcolors")
     if not os.path.isfile(theme_file):
@@ -42,15 +52,16 @@ def rgb_dict_to_hex(color_dict):
 
 def convert_colors_to_manim_colors(theme_dict):
     """
+    Converts the iTerm2 theme colors to Manim colors.
 
-
-    :param theme_dict:
-    :return:
+    :param theme_dict: a dictionary containing the iTerm2 theme colors (values in range [0, 1])
+    :return: a dictionary containing the Manim colors
     """
     return {k: m.ManimColor(rgb_dict_to_hex(v)) for k, v in theme_dict.items()}
 
 
-def apply_theme(manim_scene: m.Scene, theme_name: str, themes_dir="./media/themes", **kwargs):
+def apply_theme(manim_scene: m.Scene, theme_name: str, themes_dir="./media/themes",
+                skip_default_constructor_adjustment=False, **kwargs):
     """
     Applies the iTerm2 theme to a Manim scene.
     It basically overrides the manim default colors with the colors of the specified theme.
@@ -86,6 +97,10 @@ def apply_theme(manim_scene: m.Scene, theme_name: str, themes_dir="./media/theme
     :param theme_name:      A valid theme name from the iTerm2 themes repository.
     :param themes_dir:      The directory where the themes will be stored locally. Default is "./media/themes".
                             So you will find it alongside the other media files that manim creates.
+
+    :param skip_default_constructor_adjustment: If set to True, the default constructor adjustments will not be applied.
+                                                without adjustments text and other mobjects will use the manim default colors anyway.
+
     :return:                None
     """
 
@@ -209,5 +224,38 @@ def apply_theme(manim_scene: m.Scene, theme_name: str, themes_dir="./media/theme
 
     # set background color
     manim_scene.camera.background_color = theme_manim_colors['Background Color']
+
+    if skip_default_constructor_adjustment:
+        # just break here if you want to skip the default constructor adjustments
+        return
+
+    m.Text.set_default(
+        # font="Courier New",
+        color=m.WHITE
+    )
+    m.Tex.set_default(color=m.WHITE)
+    m.MathTex.set_default(color=m.WHITE)
+
+    # Mobjects
+    m.Mobject.set_default(color=m.WHITE)
+    m.VMobject.set_default(color=m.WHITE)
+
+    m.Rectangle.set_default(color=m.RED)
+    m.AnnotationDot.set_default(stroke_color=m.WHITE, fill_color=m.BLUE)
+    m.Arc.set_default(stroke_color=m.WHITE)
+    m.AnnularSector.set_default(color=m.WHITE)
+
+    m.NumberPlane().set_default(
+        background_line_style={
+            "stroke_color": m.GRAY,
+        },
+        x_axis_config={"stroke_color": m.WHITE},
+        y_axis_config={"stroke_color": m.WHITE},
+    )
+    m.Arrow.set_default(color=m.WHITE)
+    m.Dot.set_default(color=m.WHITE)
+
+
+
 
 

@@ -1,12 +1,10 @@
 import manim as m
-from pygments.styles.dracula import yellow
-
-from manim_themes.manim_theme import apply_theme
 
 def theme_preview() -> m.VGroup:
-
-
-
+    """
+    Create a preview of the theme colors. It is similar to the manim color preview, just ommits the prue colors.
+    :return: A VGroup of all the colors in the theme.
+    """
     blue_a_line = m.Line(m.ORIGIN, m.RIGHT * 1.5, stroke_width=35, color=m.BLUE_A)
     blue_b_line = m.Line(m.ORIGIN, m.RIGHT * 1.5, stroke_width=35, color=m.BLUE_B)
     blue_c_line = m.Line(m.ORIGIN, m.RIGHT * 1.5, stroke_width=35, color=m.BLUE_C)
@@ -200,13 +198,4 @@ def theme_preview() -> m.VGroup:
 
     return preview
 
-if __name__ == '__main__':
-    import os
-    from pathlib import Path
-
-    FLAGS = "-pqm -s"
-    SCENE = "ColorsOverview"
-
-    file_path = Path(__file__).resolve()
-    os.system(f"manim {Path(__file__).resolve()} {SCENE} {FLAGS}")
 
