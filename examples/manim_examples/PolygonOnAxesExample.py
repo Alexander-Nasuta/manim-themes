@@ -3,13 +3,13 @@ import numpy as np
 
 from manim_themes.manim_theme import apply_theme
 
-class NumberPlaneExample(m.Scene):
+class PolygonExample(m.Scene):
 
     def setup(self):
         # Set the background color to a light beige
         #theme = "Retro"
         theme="CrayonPonyFish"
-        apply_theme(manim_scene=self, theme_name=theme, light_theme=True)
+        apply_theme(manim_scene=self, theme_name=theme)
 
 
 

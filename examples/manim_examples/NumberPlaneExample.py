@@ -8,7 +8,7 @@ class NumberPlaneExample(m.Scene):
     def setup(self):
         # Set the background color to a light beige
         theme = "Obsidian"
-        apply_theme(manim_scene=self, theme_name=theme, light_theme=True)
+        apply_theme(manim_scene=self, theme_name=theme)
 
 
 

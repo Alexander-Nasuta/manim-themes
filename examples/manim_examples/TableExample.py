@@ -3,13 +3,13 @@ import numpy as np
 
 from manim_themes.manim_theme import apply_theme
 
-class NumberPlaneExample(m.Scene):
+class TableExample(m.Scene):
 
     def setup(self):
         # Set the background color to a light beige
         #theme = "Retro"
         theme="Obsidian"
-        apply_theme(manim_scene=self, theme_name=theme, light_theme=True)
+        apply_theme(manim_scene=self, theme_name=theme)
 
         m.Text.set_default(
             font="Courier New",
@@ -90,7 +90,7 @@ if __name__ == '__main__':
     from pathlib import Path
 
     FLAGS = "-pqm -s"
-    SCENE = "AxesExample"
+    SCENE = "TableExample"
 
     file_path = Path(__file__).resolve()
     os.system(f"manim {Path(__file__).resolve()} {SCENE} {FLAGS}")

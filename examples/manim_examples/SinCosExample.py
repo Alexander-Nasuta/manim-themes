@@ -9,7 +9,7 @@ class AxesExample(m.Scene):
     def setup(self):
         # Set the background color to a light beige
         theme = "Ubuntu"
-        apply_theme(manim_scene=self, theme_name=theme, light_theme=True)
+        apply_theme(manim_scene=self, theme_name=theme)
         m.Text.set_default(font="Courier New", color=m.GREEN)
         m.Tex.set_default(color=m.RED)
         m.MathTex.set_default(color=m.RED)
