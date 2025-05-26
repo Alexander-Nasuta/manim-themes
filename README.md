@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="https://raw.githubusercontent.com/Alexander-Nasuta/manim-themes/master/resources/ThemeGif_ManimCE_v0.19.0.gif" alt="Example Themes" />
+  <img src="https://raw.githubusercontent.com/Alexander-Nasuta/manim-themes/master/resources/ThemeGif.gif" alt="Example Themes" />
 </h1>
 
 # About this Project
