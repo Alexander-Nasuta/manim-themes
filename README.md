@@ -2,10 +2,13 @@
   <img src="https://raw.githubusercontent.com/Alexander-Nasuta/manim-themes/master/resources/ThemeGif_ManimCE_v0.19.0.gif" alt="Example Themes" />
 </h1>
 
-# About this Project
+## About this Project
 
 This project is a Python Module that provides allows theming of [Manim](https://www.manim.community) projects with [iterm2 color themes](https://iterm2colorschemes.com).
-# Installation
+It works by overriding the default Manim configuration with a set of colors that are derived from the selected theme.
+I am not an expert in how Python looks up variables, and I am not sure if there is a better way for a plugin to realise theming.
+It works fine for my purposes, but if you have a idea how to improve this, feel free to let me know (by issuing a pull request or opening an issue).
+## Installation
 
 Install the package with pip:
 ```
@@ -13,7 +16,7 @@ Install the package with pip:
 ```
 
 
-# Minimal Example
+## Minimal Example
 
 **Please make sure you have manim installed and running on your machine**
 
