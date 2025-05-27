@@ -1,3 +1,7 @@
+[![PyPI version](https://img.shields.io/pypi/v/manim-themes)](https://pypi.org/project/manim-themes/)
+![License](https://img.shields.io/pypi/l/manim-themes)
+[![Documentation Status](https://readthedocs.org/projects/manim-themes/badge/?version=latest)](https://manim-themes.readthedocs.io/en/latest/?badge=latest)
+
 <h1 align="center">
   <img src="https://raw.githubusercontent.com/Alexander-Nasuta/manim-themes/master/resources/ThemeGif_ManimCE_v0.19.0.gif" alt="Example Themes" />
 </h1>
@@ -18,7 +22,7 @@ Install the package with pip:
 
 ## Minimal Example
 
-**Please make sure you have manim installed and running on your machine**
+**NOTE: Please make sure you have manim installed and running on your machine**
 
 Below is a minimal example of how to use the Module.
 
