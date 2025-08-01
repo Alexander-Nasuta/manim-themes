@@ -4,7 +4,7 @@ name = "manim-themes"
 packages = [
     { include = "manim_themes" }
 ]
-version = "0.1.2"
+version = "0.1.3"
 description = "A Manim plugin that lets you apply a iterm2 color theme to your Manim scenes."
 authors = ["Alexander Nasuta <alexander.nasuta@wzl-iqs.rwth-aachen.de>"]
 readme = "README.md"

@@ -240,10 +240,34 @@ def apply_theme(manim_scene: m.Scene, theme_name: str, themes_dir="./media/theme
     m.Mobject.set_default(color=m.WHITE)
     m.VMobject.set_default(color=m.WHITE)
 
-    m.Rectangle.set_default(color=m.RED)
+    m.Rectangle.set_default(color=m.WHITE)
     m.AnnotationDot.set_default(stroke_color=m.WHITE, fill_color=m.BLUE)
     m.Arc.set_default(stroke_color=m.WHITE)
     m.AnnularSector.set_default(color=m.WHITE)
+
+    m.Angle.set_default(color=m.WHITE)
+    m.AnnotationDot.set_default(stroke_color=m.WHITE)
+    m.Annulus.set_default(color=m.WHITE)
+    m.Arrow.set_default(color=m.WHITE)
+    m.Arrow3D.set_default(color=m.WHITE)
+    m.ArrowVectorField.set_default(color=m.WHITE)
+    m.Code.set_default(
+        font="Courier New",
+        color=m.WHITE
+    )
+    m.CubicBezier.set_default(color=m.WHITE)
+    m.DashedVMobject.set_default(color=m.WHITE)
+    m.Dot.set_default(color=m.WHITE)
+    m.Dot3D.set_default(color=m.WHITE)
+    m.Line.set_default(color=m.WHITE)
+    m.Line3D.set_default(color=m.WHITE)
+    m.MarkupText.set_default(color=m.WHITE)
+    m.Polygon.set_default(color=m.WHITE)
+    m.Rectangle.set_default(color=m.WHITE)
+    m.SingleStringMathTex.set_default(color=m.WHITE)
+    m.StreamLines.set_default(color=m.WHITE)
+    m.TracedPath.set_default(stroke_color=m.WHITE)
+    m.VectorField.set_default(color=m.WHITE)
 
     m.NumberPlane().set_default(
         background_line_style={
@@ -252,8 +276,9 @@ def apply_theme(manim_scene: m.Scene, theme_name: str, themes_dir="./media/theme
         x_axis_config={"stroke_color": m.WHITE},
         y_axis_config={"stroke_color": m.WHITE},
     )
-    m.Arrow.set_default(color=m.WHITE)
-    m.Dot.set_default(color=m.WHITE)
+
+    m.Table.set_default(line_config={"color": m.WHITE})
+
 
 
 
