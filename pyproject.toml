@@ -4,12 +4,14 @@ name = "manim-themes"
 packages = [
     { include = "manim_themes" }
 ]
-version = "0.1.1"
+version = "0.1.2"
 description = "A Manim plugin that lets you apply a iterm2 color theme to your Manim scenes."
 authors = ["Alexander Nasuta <alexander.nasuta@wzl-iqs.rwth-aachen.de>"]
 readme = "README.md"
 license = "MIT"
 homepage = "https://github.com/Alexander-Nasuta/manim-themes"
+repository = "https://github.com/Alexander-Nasuta/manim-themes"
+documentation="https://manim-themes.readthedocs.io/en/latest/"
 
 [tool.poetry.requires-plugins]
 poetry-plugin-export = ">=1.8"
